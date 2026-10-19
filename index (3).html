@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nour Parfums</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap">
+<style>
+:root{--bg:#F1ECF2;--surface:#E6DEE9;--ink:#2A1733;--muted:#6B5A73;--accent:#A93A5F;--on-accent:#fff;--liquid:#C9577A;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1B1022;--surface:#291A33;--ink:#F1E8F3;--muted:#B3A2BB;--accent:#E58BA8;--on-accent:#1B1022;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1B1022;--surface:#291A33;--ink:#F1E8F3;--muted:#B3A2BB;--accent:#E58BA8;--on-accent:#1B1022;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Jost",system-ui,sans-serif;font-weight:300;line-height:1.65;font-size:17px}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;line-height:1.05;margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 6vw;gap:16px}
+.logo{font-family:"Cormorant Garamond",Georgia,serif;font-size:26px;font-weight:600;text-decoration:none;letter-spacing:.02em}
+nav div{display:flex;gap:26px}
+nav a{text-decoration:none;font-size:15px;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:5vw;align-items:center;padding:4vw 6vw 8vw;max-width:1200px;margin:0 auto}
+.hero h1{font-size:clamp(46px,7.5vw,104px);letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero p{max-width:44ch;color:var(--muted);margin:26px 0 34px}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);border:0;padding:15px 34px;font:500 15px "Jost",sans-serif;cursor:pointer;text-decoration:none;border-radius:999px}
+.btn:hover{filter:brightness(1.08)}
+.stage{display:flex;justify-content:center}
+.stage svg{width:min(100%,340px);height:auto;overflow:visible}
+.liquid{fill:var(--liquid);transition:fill .7s ease}
+.mist{animation:rise 6s ease-in-out infinite;transform-origin:center}
+@keyframes rise{0%,100%{opacity:.15;transform:translateY(6px)}50%{opacity:.5;transform:translateY(-8px)}}
+@media(prefers-reduced-motion:reduce){.mist{animation:none;opacity:.3}.liquid{transition:none}html{scroll-behavior:auto}}
+section{padding:90px 6vw;max-width:1200px;margin:0 auto}
+h2{font-size:clamp(34px,4.5vw,56px);margin-bottom:34px}
+.picker{display:grid;grid-template-columns:260px 1fr;gap:5vw;background:var(--surface);padding:clamp(24px,4vw,56px);border-radius:28px}
+.tabs{display:flex;flex-direction:column;gap:6px}
+.tab{text-align:left;background:none;border:0;border-left:2px solid transparent;color:var(--muted);font:400 22px "Cormorant Garamond",Georgia,serif;padding:10px 16px;cursor:pointer}
+.tab[aria-selected="true"]{color:var(--ink);border-left-color:var(--accent)}
+.detail h3{font-size:clamp(32px,4vw,48px)}
+.detail .tag{color:var(--muted);margin:6px 0 24px;font-style:italic;font-family:"Cormorant Garamond",Georgia,serif;font-size:21px}
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:30px}
+.notes b{display:block;font-weight:500;margin-bottom:2px}
+.notes span{color:var(--muted);font-size:15px}
+.buy{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.price{font:600 28px "Cormorant Garamond",Georgia,serif}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:start}
+.story p{color:var(--muted);margin:0 0 18px;max-width:52ch}
+.news{text-align:center;background:var(--surface);border-radius:28px;max-width:900px}
+.news p{color:var(--muted);max-width:46ch;margin:-14px auto 28px}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+input{font:300 16px "Jost",sans-serif;padding:14px 22px;border-radius:999px;border:1px solid var(--muted);background:var(--bg);color:var(--ink);min-width:min(100%,300px)}
+#msg{min-height:1.6em;margin-top:14px;color:var(--accent)}
+.bag{background:var(--surface);border-radius:28px;max-width:900px}
+.line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--muted)}
+.line button{background:none;border:1px solid var(--muted);color:var(--ink);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px}
+.qty{display:flex;align-items:center;gap:10px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+.fields input,.fields textarea{width:100%;min-width:0;font:300 16px "Jost",sans-serif;padding:14px 20px;border-radius:18px;border:1px solid var(--muted);background:var(--bg);color:var(--ink)}
+.fields textarea{grid-column:1/-1;resize:vertical;min-height:80px}
+.total{display:flex;justify-content:space-between;margin-top:16px;font:600 26px "Cormorant Garamond",Georgia,serif}
+@media(max-width:800px){.fields{grid-template-columns:1fr}}
+footer{padding:40px 6vw;text-align:center;color:var(--muted);font-size:14px}
+@media(max-width:800px){.hero,.picker,.story{grid-template-columns:1fr}.stage{order:-1}.tabs{flex-direction:row;flex-wrap:wrap}.tab{border-left:0;border-bottom:2px solid transparent;padding:6px 10px;font-size:20px}.tab[aria-selected="true"]{border-bottom-color:var(--accent)}.notes{grid-template-columns:1fr}nav div{gap:16px}section{padding:60px 6vw}}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="#top">Nour Parfums</a>
+  <div><a href="#collection">Collection</a><a href="#story">Our story</a><a href="#join">Join</a><a href="#bag-section" id="bagLink">Bag (0)</a></div>
+</nav>
+
+<header class="hero" id="top">
+  <div>
+    <h1>Wear the hour<br>you love <em>most</em></h1>
+    <p>Small-batch perfumes made from rose, oud, jasmine and sandal. Four scents, each built around a time of day.</p>
+    <a class="btn" href="#collection">Find your scent</a>
+  </div>
+  <div class="stage">
+    <svg viewBox="0 0 200 300" role="img" aria-label="Perfume bottle">
+      <circle class="mist" cx="70" cy="40" r="6" fill="var(--liquid)"/>
+      <circle class="mist" cx="100" cy="22" r="4" fill="var(--liquid)" style="animation-delay:-2s"/>
+      <circle class="mist" cx="132" cy="44" r="5" fill="var(--liquid)" style="animation-delay:-4s"/>
+      <rect x="82" y="62" width="36" height="26" rx="4" fill="var(--ink)"/>
+      <rect x="92" y="88" width="16" height="16" fill="var(--muted)"/>
+      <rect x="30" y="104" width="140" height="176" rx="22" fill="var(--surface)" stroke="var(--ink)" stroke-width="2"/>
+      <path class="liquid" id="liq" d="M38 150 Q70 138 100 150 T162 150 V258 a14 14 0 0 1 -14 14 H52 a14 14 0 0 1 -14 -14 Z"/>
+      <rect x="62" y="176" width="76" height="62" rx="4" fill="var(--bg)" opacity=".9"/>
+      <text x="100" y="203" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="17" fill="var(--ink)" id="lbl">Subah</text>
+      <text x="100" y="222" text-anchor="middle" font-family="Jost,sans-serif" font-size="8" fill="var(--muted)">NOUR PARFUMS · 50 ML</text>
+    </svg>
+  </div>
+</header>
+
+<section id="collection">
+  <h2>The collection</h2>
+  <div class="picker">
+    <div class="tabs" role="tablist" aria-label="Fragrances" id="tabs"></div>
+    <div class="detail" role="tabpanel" aria-live="polite">
+      <h3 id="dName"></h3>
+      <div class="tag" id="dTag"></div>
+      <div class="notes">
+        <div><b>Top</b><span id="nTop"></span></div>
+        <div><b>Heart</b><span id="nHeart"></span></div>
+        <div><b>Base</b><span id="nBase"></span></div>
+      </div>
+      <div class="buy"><span class="price" id="dPrice"></span><button class="btn" id="add">Add to bag</button></div>
+      <div id="added" style="margin-top:14px;color:var(--accent);min-height:1.6em"></div>
+    </div>
+  </div>
+</section>
+
+<section id="story" class="story">
+  <h2>Made slowly, in small batches</h2>
+  <div>
+    <p>Nour means light. We started with one question: what does a morning, an afternoon, an evening and a night actually smell like?</p>
+    <p>Each perfume is blended by hand, rested for six weeks and bottled in recycled glass. No fillers, no shortcuts.</p>
+    <p>Every order ships with a 2 ml sample of another scent, so you can find your next favourite.</p>
+  </div>
+</section>
+
+<section id="bag-section" class="bag">
+  <h2>Your bag</h2>
+  <div id="lines"></div>
+  <div class="total"><span>Total</span><span id="total">₹0</span></div>
+  <div class="fields">
+    <input id="cName" placeholder="Full name" aria-label="Full name" autocomplete="name">
+    <input id="cEmail" type="email" placeholder="Email" aria-label="Email" autocomplete="email">
+    <input id="cPhone" type="tel" placeholder="Phone number" aria-label="Phone number" autocomplete="tel">
+    <input id="cPay" value="Pay on delivery" disabled aria-label="Payment method">
+    <textarea id="cAddr" placeholder="Delivery address" aria-label="Delivery address" autocomplete="street-address"></textarea>
+  </div>
+  <button class="btn" id="order">Place order</button>
+  <div id="orderMsg" role="status" style="margin-top:14px;min-height:1.6em;color:var(--accent)"></div>
+</section>
+
+<section id="join" class="news">
+  <h2>Get first access to new scents</h2>
+  <p>One email a month. No spam, and you can leave any time.</p>
+  <div class="row">
+    <input id="email" type="email" placeholder="Your email address" aria-label="Email address">
+    <button class="btn" id="sub">Subscribe</button>
+  </div>
+  <div id="msg" role="status"></div>
+</section>
+
+<footer>© 2026 Nour Parfums. All rights reserved.</footer>
+
+<script>
+var P=[],cart={},cur=0,tabs=document.getElementById("tabs");
+var inr=function(n){return "₹"+n.toLocaleString("en-IN")};
+try{cart=JSON.parse(localStorage.getItem("nourCart")||"{}")}catch(e){}
+function api(url,data){
+  return fetch(url,data?{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}:undefined)
+    .then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||"Something went wrong.");return j})});
+}
+function show(i){
+  var d=P[i];cur=i;
+  document.documentElement.style.setProperty("--liquid",d.color);
+  lbl.textContent=d.name;dName.textContent=d.name;dTag.textContent=d.tag;
+  nTop.textContent=d.top;nHeart.textContent=d.heart;nBase.textContent=d.base;dPrice.textContent=inr(d.price);
+  added.textContent="";
+  [].forEach.call(tabs.children,function(b,j){b.setAttribute("aria-selected",j===i)});
+}
+function save(){try{localStorage.setItem("nourCart",JSON.stringify(cart))}catch(e){}renderBag()}
+function renderBag(){
+  var n=0,t=0;lines.textContent="";
+  P.forEach(function(p){
+    var q=cart[p.id]||0;if(!q)return;n+=q;t+=q*p.price;
+    var row=document.createElement("div");row.className="line";
+    var nm=document.createElement("span");nm.textContent=p.name+" · "+inr(p.price);
+    var c=document.createElement("div");c.className="qty";
+    var m=document.createElement("button");m.textContent="−";m.setAttribute("aria-label","Remove one "+p.name);
+    var cnt=document.createElement("span");cnt.textContent=q;
+    var a=document.createElement("button");a.textContent="+";a.setAttribute("aria-label","Add one "+p.name);
+    m.onclick=function(){cart[p.id]=q-1;if(cart[p.id]<1)delete cart[p.id];save()};
+    a.onclick=function(){cart[p.id]=Math.min(q+1,10);save()};
+    c.append(m,cnt,a);row.append(nm,c);lines.appendChild(row);
+  });
+  if(!n){var e=document.createElement("p");e.textContent="Your bag is empty. Pick a scent above.";e.style.color="var(--muted)";lines.appendChild(e)}
+  total.textContent=inr(t);bagLink.textContent="Bag ("+n+")";
+}
+add.onclick=function(){cart[P[cur].id]=Math.min((cart[P[cur].id]||0)+1,10);added.textContent=P[cur].name+" added to your bag.";save()};
+order.onclick=function(){
+  var items=Object.keys(cart).map(function(k){return{id:k,qty:cart[k]}});
+  orderMsg.textContent="Placing your order…";
+  api("/api/orders",{name:cName.value,email:cEmail.value,phone:cPhone.value,address:cAddr.value,items:items})
+    .then(function(r){cart={};save();orderMsg.textContent="Order "+r.orderId+" placed. Total "+inr(r.total)+". We’ll contact you to confirm."})
+    .catch(function(e){orderMsg.textContent=e.message});
+};
+sub.onclick=function(){
+  api("/api/subscribe",{email:email.value}).then(function(r){msg.textContent=r.message}).catch(function(e){msg.textContent=e.message});
+};
+api("/api/products").then(function(list){
+  P=list;
+  P.forEach(function(d,i){
+    var b=document.createElement("button");
+    b.className="tab";b.setAttribute("role","tab");b.textContent=d.name;
+    b.onclick=function(){show(i)};tabs.appendChild(b);
+  });
+  show(1);renderBag();
+}).catch(function(){dName.textContent="Could not load products. Start the server with: node server.js"});
+</script>
+</body>
+</html>
